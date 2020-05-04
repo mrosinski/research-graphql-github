@@ -16,4 +16,16 @@ A simple research of GraphQL features on the example of GitHub API v4.
 >
 > Please do not use **npm** as it recreates `node_modules/` directory!
 
-## Running
+## Development
+
+To run development server with hot reloading, use:
+
+`yarn start`
+
+To lint code and fix errors, use:
+
+`yarn eslint:fix`
+
+To perform type checking, use:
+
+`yarn typecheck`
