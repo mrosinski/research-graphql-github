@@ -6,21 +6,22 @@
 !.yarn/releases
 !.yarn/plugins
 
-# Intellij specific
+# Intellij
 ##################
 .idea
 *.iml
 
-# VS Code specific
+# VS Code
 ##################
 .vscode
 
-# MacOS generated files
+# MacOS
 ##################
 .DS_Store
-.DS_Store?
 ._*
 .Spotlight-V100
 .Trashes
-ehthumbs.db
-Thumbs.db
+
+# Project specific
+##################
+build
