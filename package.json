@@ -1,0 +1,8 @@
+{
+  "name": "research-graphql-github",
+  "version": "1.0.0",
+  "description": "A simple research of GraphQL features on the example of GitHub API v4.",
+  "repository": "https://github.com/mrosinski/research-graphql-github",
+  "author": "Marcin Rosiński <mrosinski@users.noreply.github.com>",
+  "license": "MIT"
+}
