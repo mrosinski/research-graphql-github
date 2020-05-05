@@ -22,10 +22,27 @@ To run development server with hot reloading, use:
 
 `yarn start`
 
-To lint code and fix errors, use:
-
-`yarn eslint:fix`
-
 To perform type checking, use:
 
 `yarn typecheck`
+
+To lint code (and fix errors), use:
+
+`yarn eslint`
+
+`yarn eslint:fix`
+
+To lint styles, use:
+
+`yarn stylelint`
+
+## Known issues
+
+### Missing dependencies in libraries
+
+Yarn 2 is very sensitive to missing dependencies. Some libraries used in this project are awaiting next releases to fix their broken dependency lists.
+
+As a workaround, some transitive dependencies were added explicitly to the project. These should be removed in the future:  
+- tiny-warning
+- react-is
+- csstype
