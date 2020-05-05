@@ -5,6 +5,7 @@ import PnpWebpackPlugin from 'pnp-webpack-plugin'
 import ForkTsCheckerNotifierWebpackPlugin from 'fork-ts-checker-notifier-webpack-plugin'
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
+import { getCustomTransformers } from './webpack.ts-transformers'
 
 const baseConfig: webpack.Configuration = {
   context: __dirname,
@@ -20,13 +21,14 @@ const baseConfig: webpack.Configuration = {
         loader: 'ts-loader',
         options: {
           transpileOnly: true, // typechecking is done by ForkTsCheckerWebpackPlugin
+          getCustomTransformers,
         },
       },
     ],
   },
 
   resolve: {
-    extensions: ['.ts', '.tsx', '.js'],
+    extensions: ['.ts', '.tsx', '.js', '.jsx'],
     plugins: [PnpWebpackPlugin],
   },
 
@@ -34,11 +36,7 @@ const baseConfig: webpack.Configuration = {
     plugins: [PnpWebpackPlugin.moduleLoader(module)],
   },
 
-  plugins: [
-    new HtmlWebpackPlugin({
-      title: 'GitHub Users Browser',
-    }),
-  ],
+  plugins: [new HtmlWebpackPlugin()],
 }
 
 const devConfig: webpack.Configuration = {

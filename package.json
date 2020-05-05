@@ -7,21 +7,24 @@
   "license": "MIT",
   "scripts": {
     "start": "webpack-dev-server --open",
+    "typecheck": "tsc --noEmit",
     "eslint": "eslint --ext .ts,.tsx .",
     "eslint:fix": "eslint --fix --ext .ts,.tsx .",
-    "typecheck": "tsc --noEmit",
-    "lint": "yarn eslint && yarn typecheck"
+    "stylelint": "stylelint './src/**/*.{ts,tsx}'",
+    "lint": "yarn typecheck && yarn eslint && yarn stylelint"
   },
   "devDependencies": {
     "@hot-loader/react-dom": "^16.13.0",
     "@types/node": "^13.13.4",
     "@types/react": "^16.9.34",
     "@types/react-dom": "^16.9.7",
+    "@types/styled-components": "^5.1.0",
     "@types/webpack": "^4.41.12",
     "@types/webpack-dev-server": "^3.10.1",
     "@types/webpack-merge": "^4.1.5",
     "@typescript-eslint/eslint-plugin": "^2.30.0",
     "@typescript-eslint/parser": "^2.30.0",
+    "csstype": "^2.6.10",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-functional": "^3.0.1",
@@ -36,17 +39,28 @@
     "pnp-webpack-plugin": "^1.6.4",
     "prettier": "^2.0.5",
     "react-hot-loader": "^4.12.21",
+    "react-is": "^16.13.1",
+    "stylelint": "^13.3.3",
+    "stylelint-config-recommended": "^3.0.0",
+    "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-processor-styled-components": "^1.10.0",
+    "tiny-warning": "^1.0.3",
     "ts-loader": "^7.0.2",
     "ts-node": "^8.10.1",
     "typescript": "^3.8.3",
+    "typescript-plugin-styled-components": "^1.4.4",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.10.3",
     "webpack-merge": "^4.2.2"
   },
   "dependencies": {
+    "@material-ui/core": "^4.9.13",
+    "@material-ui/icons": "^4.9.1",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "react-helmet": "^6.0.0",
+    "styled-components": "^5.1.0"
   },
   "husky": {
     "hooks": {
