@@ -15,9 +15,9 @@ import styled from 'styled-components'
 interface User {
   avatarUrl: string
   name: string
-  nick: string
-  githubUrl: string
-  email: string
+  login: string
+  url: string
+  email?: string
 }
 
 interface UserCardProps {
@@ -32,20 +32,22 @@ export const UserCard: React.FC<UserCardProps> = ({ user }) => (
     <CardContent>
       <Typography variant='h5'>{user.name}</Typography>
       <Typography variant='h6' color='textSecondary'>
-        {user.nick}
+        {user.login}
       </Typography>
     </CardContent>
     <CardActions>
       <Tooltip title='Visit GitHub profile' arrow>
-        <IconButton component='a' href={user.githubUrl}>
+        <IconButton component='a' href={user.url}>
           <GitHubIcon />
         </IconButton>
       </Tooltip>
-      <Tooltip title='Send email' arrow>
-        <IconButton component='a' href={`mailto:${user.email}`}>
-          <EmailIcon />
-        </IconButton>
-      </Tooltip>
+      {user.email && (
+        <Tooltip title='Send email' arrow>
+          <IconButton component='a' href={`mailto:${user.email}`}>
+            <EmailIcon />
+          </IconButton>
+        </Tooltip>
+      )}
     </CardActions>
   </Card>
 )

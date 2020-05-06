@@ -5,6 +5,8 @@ import { ApplicationBar } from './components/core/ApplicationBar'
 import { APPLICATION_NAME } from './config'
 import { ApplicationTheme } from './components/core/ApplicationTheme'
 import { ProfileView } from './components/profile/ProfileView'
+import { ApolloProvider } from '@apollo/client'
+import { githubApiClient } from './services/GithubApiClient'
 
 const Application: React.FC = () => (
   <>
@@ -14,8 +16,10 @@ const Application: React.FC = () => (
     </Helmet>
 
     <ApplicationTheme>
-      <ApplicationBar />
-      <ProfileView />
+      <ApolloProvider client={githubApiClient}>
+        <ApplicationBar />
+        <ProfileView />
+      </ApolloProvider>
     </ApplicationTheme>
   </>
 )

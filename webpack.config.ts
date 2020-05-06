@@ -5,6 +5,7 @@ import PnpWebpackPlugin from 'pnp-webpack-plugin'
 import ForkTsCheckerNotifierWebpackPlugin from 'fork-ts-checker-notifier-webpack-plugin'
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
+import DotenvWebpackPlugin from 'dotenv-webpack'
 import { getCustomTransformers } from './webpack.ts-transformers'
 
 const baseConfig: webpack.Configuration = {
@@ -36,7 +37,7 @@ const baseConfig: webpack.Configuration = {
     plugins: [PnpWebpackPlugin.moduleLoader(module)],
   },
 
-  plugins: [new HtmlWebpackPlugin()],
+  plugins: [new HtmlWebpackPlugin(), new DotenvWebpackPlugin({ safe: true })],
 }
 
 const devConfig: webpack.Configuration = {
