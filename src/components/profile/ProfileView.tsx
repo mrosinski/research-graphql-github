@@ -4,35 +4,55 @@ import { UserCard } from './UserCard'
 import { RepositoryList } from './RepositoryList'
 import { Grid } from '@material-ui/core'
 import { ScrollTopFab } from '../core/ScrollTopFab'
+import { gql, useQuery } from '@apollo/client'
+import { CenteredMessage } from '../core/CenteredMessage'
+import { LoadingIndicator } from '../core/LoadingIndicator'
 
-export const ProfileView: React.FC = () => (
-  <>
-    <ContentContainer>
-      <Grid container spacing={2} justify='center'>
-        <Grid item xs={12} sm={4} md={3}>
-          <UserCard
-            user={{
-              avatarUrl:
-                'https://avatars3.githubusercontent.com/u/6419867?s=460&u=4e833e4a7a69352d526cccd7b27e0776f142fa25&v=4',
-              name: 'Marcin Rosiński',
-              nick: 'mrosinski',
-              githubUrl: 'https://github.com/mrosinski',
-              email: 'mrosinski@users.noreply.github.com',
-            }}
-          />
-        </Grid>
-        <Grid item xs={12} sm={8} md={6}>
-          <RepositoryList
-            repositories={[...new Array(10)].map((_, index) => ({
-              name: `research-graphql-github-${index}`,
-              description: 'A simple research of GraphQL features on the example of GitHub API v4.',
-              githubUrl: 'https://github.com/mrosinski/research-graphql-github',
-            }))}
-          />
-        </Grid>
-      </Grid>
-    </ContentContainer>
+const GetProfileQuery = gql`
+  query GetProfile($login: String!, $orderDirection: String!) {
+    user(login: $login) {
+      avatarUrl
+      name
+      login
+      email
+      url
+      repositories(orderBy: { field: NAME, direction: $orderDirection }, first: 15) {
+        nodes {
+          id
+          url
+          nameWithOwner
+          description
+        }
+      }
+    }
+  }
+`
 
-    <ScrollTopFab />
-  </>
-)
+export const ProfileView: React.FC = () => {
+  const { loading, error, data } = useQuery(GetProfileQuery, {
+    variables: {
+      login: 'mrosinski',
+      orderDirection: 'ASC',
+    },
+  })
+
+  return (
+    <>
+      {loading && <LoadingIndicator />}
+      <ContentContainer>
+        {error && <CenteredMessage header='No such user' description='Try your luck with another search' />}
+        {data && (
+          <Grid container spacing={2} justify='center'>
+            <Grid item xs={12} sm={4} md={3}>
+              <UserCard user={data.user} />
+            </Grid>
+            <Grid item xs={12} sm={8} md={6}>
+              <RepositoryList repositories={data.user.repositories.nodes} />
+            </Grid>
+          </Grid>
+        )}
+      </ContentContainer>
+      <ScrollTopFab />
+    </>
+  )
+}

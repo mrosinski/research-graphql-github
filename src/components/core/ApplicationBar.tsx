@@ -19,7 +19,7 @@ export const ApplicationBar: React.FC = () => {
   const isScrolled = useScrollTrigger()
 
   return (
-    <Slide appear={false} direction='down' in={!isScrolled}>
+    <Slide direction='down' in={!isScrolled}>
       <AppBar position='sticky'>
         <Container>
           <Grid container spacing={2} justify='center'>
