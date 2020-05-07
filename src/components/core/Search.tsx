@@ -6,7 +6,7 @@ import { Search as SearchIcon } from '@material-ui/icons'
 import { Routing } from '../../routing'
 import { useDebouncedCallback } from 'use-debounce'
 
-const SEARCH_DELAY = 400
+const SEARCH_DELAY = 500
 
 export const Search: React.FC = () => {
   const { push } = useHistory()
