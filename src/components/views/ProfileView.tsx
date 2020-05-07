@@ -1,13 +1,14 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
 import { ContentContainer } from '../core/ContentContainer'
-import { UserCard } from './UserCard'
-import { RepositoryList } from './RepositoryList'
+import { UserCard } from '../domain/UserCard'
+import { RepositoryList } from '../domain/RepositoryList'
 import { Grid } from '@material-ui/core'
 import { ScrollTopButton } from '../core/ScrollTopButton'
 import { gql, useQuery } from '@apollo/client'
 import { CenteredMessage } from '../core/CenteredMessage'
 import { LoadingIndicator } from '../core/LoadingIndicator'
+import { useOrderDirection } from '../../state/order-direction/useOrderDirection'
 
 const GetProfileQuery = gql`
   query GetProfile($login: String!, $orderDirection: String!) {
@@ -31,11 +32,12 @@ const GetProfileQuery = gql`
 
 export const ProfileView: React.FC = () => {
   const { login } = useParams<{ login: string }>()
+  const { orderDirection } = useOrderDirection()
 
   const { loading, error, data } = useQuery(GetProfileQuery, {
     variables: {
       login,
-      orderDirection: 'ASC',
+      orderDirection,
     },
   })
 

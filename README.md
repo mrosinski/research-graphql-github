@@ -6,7 +6,7 @@ A simple research of GraphQL features on the example of GitHub API v4.
 
 1. Install Node.js using [Node Version Manager (nvm)](https://github.com/nvm-sh/nvm) or manually (see [.nvmrc](./.nvmrc) for a version).
 1. Install [Yarn](https://yarnpkg.com/getting-started/install#global-install) package manager.
-1. Put your `GITHUB_API_TOKEN` into `.env` file. 
+1. Generate your [GitHub personal access token](https://github.com/settings/tokens) (*read:user, user:email*) and put it into `.env` file as `GITHUB_API_TOKEN`.
 
 > This project prefers **Yarn** over **npm** to use features:
 > - [Plug'n'Play](https://yarnpkg.com/features/pnp)
@@ -26,6 +26,8 @@ To run development server with hot reloading, use:
 To check types and lint code, use:
 
 `yarn check`
+
+For development inspiration, see [issues tracker](https://github.com/mrosinski/research-graphql-github/issues).
 
 ## Known issues
 

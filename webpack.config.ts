@@ -12,7 +12,7 @@ const baseConfig: webpack.Configuration = {
   context: __dirname,
   entry: './src/index.tsx',
   output: {
-    path: path.resolve(__dirname, './build'),
+    publicPath: '/',
   },
 
   module: {
@@ -64,4 +64,12 @@ const devConfig: webpack.Configuration = {
   ],
 }
 
-export default webpackMerge(baseConfig, devConfig)
+const prodConfig: webpack.Configuration = {
+  mode: 'production',
+
+  output: {
+    path: path.resolve(__dirname, './build'),
+  },
+}
+
+export default webpackMerge(baseConfig, process.env.WEBPACK_DEV_SERVER ? devConfig : prodConfig)

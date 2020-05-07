@@ -2,14 +2,15 @@ import React from 'react'
 import { hot } from 'react-hot-loader'
 import { Helmet } from 'react-helmet'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import { ApplicationBar } from './components/core/ApplicationBar'
-import { APPLICATION_NAME } from './config'
-import { ApplicationTheme } from './components/core/ApplicationTheme'
-import { HomeView } from './components/home/HomeView'
-import { ProfileView } from './components/profile/ProfileView'
 import { ApolloProvider } from '@apollo/client'
-import { githubApiClient } from './services/githubApiClient'
+import { APPLICATION_NAME } from './config'
 import { Routing } from './routing'
+import { githubApiClient } from './api/githubApiClient'
+import { ApplicationBar } from './components/core/ApplicationBar'
+import { ApplicationTheme } from './components/core/ApplicationTheme'
+import { HomeView } from './components/views/HomeView'
+import { ProfileView } from './components/views/ProfileView'
+import { OrderDirectionContextProvider } from './state/order-direction/OrderDirectionContextProvider'
 
 const Application: React.FC = () => (
   <>
@@ -20,17 +21,19 @@ const Application: React.FC = () => (
 
     <ApplicationTheme>
       <ApolloProvider client={githubApiClient}>
-        <Router>
-          <ApplicationBar />
-          <Switch>
-            <Route exact path={Routing.Home()}>
-              <HomeView />
-            </Route>
-            <Route exact path={Routing.Profile()}>
-              <ProfileView />
-            </Route>
-          </Switch>
-        </Router>
+        <OrderDirectionContextProvider>
+          <Router>
+            <ApplicationBar />
+            <Switch>
+              <Route exact path={Routing.Home()}>
+                <HomeView />
+              </Route>
+              <Route exact path={Routing.Profile()}>
+                <ProfileView />
+              </Route>
+            </Switch>
+          </Router>
+        </OrderDirectionContextProvider>
       </ApolloProvider>
     </ApplicationTheme>
   </>
