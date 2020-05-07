@@ -1,15 +1,9 @@
 import React from 'react'
 import { Avatar, Grid, Hidden, List, ListItem, ListItemAvatar, ListItemText, ListSubheader } from '@material-ui/core'
 import { Folder as RepositoryIcon } from '@material-ui/icons'
-import { OrderButton } from '../core/OrderButton'
+import { OrderButton } from './OrderButton'
 import { CenteredMessage } from '../core/CenteredMessage'
-
-interface Repository {
-  id: string
-  nameWithOwner: string
-  description: string
-  url: string
-}
+import { Repository } from './types'
 
 interface RepositoryListProps {
   repositories: Repository[]
@@ -43,5 +37,9 @@ export const RepositoryList: React.FC<RepositoryListProps> = ({ repositories }) 
       ))}
     </List>
   ) : (
-    <CenteredMessage header='No public repositories to show' description='Give it a shot with another search' />
+    <CenteredMessage
+      header='No public repositories to show'
+      description='Give it a shot with another search'
+      position='relative'
+    />
   )

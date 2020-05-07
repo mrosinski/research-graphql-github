@@ -1,5 +1,4 @@
 # Yarn
-##################
 # see: https://yarnpkg.com/advanced/qa#which-files-should-be-gitignored
 .yarn/*
 !.yarn/cache
@@ -7,22 +6,18 @@
 !.yarn/plugins
 
 # Intellij
-##################
 .idea
 *.iml
 
 # VS Code
-##################
 .vscode
 
 # MacOS
-##################
 .DS_Store
 ._*
 .Spotlight-V100
 .Trashes
 
 # Project specific
-##################
 .env
 build
