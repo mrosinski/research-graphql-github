@@ -2,8 +2,6 @@ import path from 'path'
 import webpack from 'webpack'
 import webpackMerge from 'webpack-merge'
 import PnpWebpackPlugin from 'pnp-webpack-plugin'
-import ForkTsCheckerNotifierWebpackPlugin from 'fork-ts-checker-notifier-webpack-plugin'
-import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import DotenvWebpackPlugin from 'dotenv-webpack'
 import { getCustomTransformers } from './webpack.ts-transformers'
@@ -21,7 +19,6 @@ const baseConfig: webpack.Configuration = {
         test: /\.ts(x?)$/,
         loader: 'ts-loader',
         options: {
-          transpileOnly: true, // typechecking is done by ForkTsCheckerWebpackPlugin
           getCustomTransformers,
         },
       },
@@ -55,13 +52,6 @@ const devConfig: webpack.Configuration = {
     hot: true,
     historyApiFallback: true,
   },
-
-  plugins: [
-    new ForkTsCheckerWebpackPlugin({
-      checkSyntacticErrors: true,
-    }),
-    new ForkTsCheckerNotifierWebpackPlugin(),
-  ],
 }
 
 const prodConfig: webpack.Configuration = {
