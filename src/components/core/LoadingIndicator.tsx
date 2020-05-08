@@ -1,5 +1,5 @@
-import styled from 'styled-components'
 import { LinearProgress, LinearProgressProps } from '@material-ui/core'
+import styled from 'styled-components'
 
 export const LoadingIndicator = styled(LinearProgress).attrs({
   variant: 'query',

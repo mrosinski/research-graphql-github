@@ -3,7 +3,7 @@ import { Avatar, Grid, Hidden, List, ListItem, ListItemAvatar, ListItemText, Lis
 import { Folder as RepositoryIcon } from '@material-ui/icons'
 import { OrderButton } from './OrderButton'
 import { CenteredMessage } from '../core/CenteredMessage'
-import { Repository } from '../../api/types'
+import { Repository } from '../../api/profile'
 
 interface RepositoryListProps {
   repositories: Repository[]

@@ -1,5 +1,5 @@
 import React from 'react'
-import { OrderDirection } from '../../api/types'
+import { OrderDirection } from '../../api/common'
 
 export interface OrderDirectionContext {
   orderDirection: OrderDirection

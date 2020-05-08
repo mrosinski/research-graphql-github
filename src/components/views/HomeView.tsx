@@ -1,7 +1,7 @@
 import React from 'react'
-import { CenteredMessage } from '../core/CenteredMessage'
 import { Divider } from '@material-ui/core'
 import { EmojiEmotions, EmojiEvents, EmojiFoodBeverage, EmojiObjects, EmojiPeople } from '@material-ui/icons'
+import { CenteredMessage } from '../core/CenteredMessage'
 
 export const HomeView: React.FC = () => (
   <CenteredMessage
