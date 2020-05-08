@@ -12,8 +12,3 @@ export interface Repository {
   description: string
   url: string
 }
-
-export enum OrderDirection {
-  Ascending = 'ASC',
-  Descending = 'DESC',
-}

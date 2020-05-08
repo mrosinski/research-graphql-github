@@ -11,7 +11,7 @@ import {
 } from '@material-ui/core'
 import { GitHub as GitHubIcon, Email as EmailIcon } from '@material-ui/icons'
 import styled from 'styled-components'
-import { User } from '../../api/types'
+import { User } from '../../api/profile'
 
 interface UserCardProps {
   user: User

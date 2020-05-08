@@ -1,45 +1,19 @@
 import React from 'react'
-import { useParams } from 'react-router-dom'
-import { ContentContainer } from '../core/ContentContainer'
-import { UserCard } from '../domain/UserCard'
-import { RepositoryList } from '../domain/RepositoryList'
 import { Grid } from '@material-ui/core'
+import { useParams } from 'react-router-dom'
+import { useOrderDirection } from '../../state/order-direction'
+import { useProfile } from '../../api/profile'
+import { ContentContainer } from '../core/ContentContainer'
 import { ScrollTopButton } from '../core/ScrollTopButton'
-import { gql, useQuery } from '@apollo/client'
 import { CenteredMessage } from '../core/CenteredMessage'
 import { LoadingIndicator } from '../core/LoadingIndicator'
-import { useOrderDirection } from '../../state/order-direction/useOrderDirection'
-
-const GetProfileQuery = gql`
-  query GetProfile($login: String!, $orderDirection: String!) {
-    user(login: $login) {
-      avatarUrl
-      name
-      login
-      email
-      url
-      repositories(orderBy: { field: NAME, direction: $orderDirection }, first: 15) {
-        nodes {
-          id
-          url
-          nameWithOwner
-          description
-        }
-      }
-    }
-  }
-`
+import { UserCard } from '../domain/UserCard'
+import { RepositoryList } from '../domain/RepositoryList'
 
 export const ProfileView: React.FC = () => {
   const { login } = useParams<{ login: string }>()
   const { orderDirection } = useOrderDirection()
-
-  const { loading, error, data } = useQuery(GetProfileQuery, {
-    variables: {
-      login,
-      orderDirection,
-    },
-  })
+  const { loading, error, data } = useProfile({ login, orderDirection })
 
   return (
     <>

@@ -1,6 +1,5 @@
 import React from 'react'
 import { AppBar, Container, Grid, Hidden, Slide, Toolbar, Typography, useScrollTrigger } from '@material-ui/core'
-
 import { APPLICATION_NAME } from '../../config'
 import { Search } from './Search'
 

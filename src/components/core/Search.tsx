@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useHistory } from 'react-router-dom'
+import { useDebouncedCallback } from 'use-debounce'
 import { fade, InputBase } from '@material-ui/core'
 import { Search as SearchIcon } from '@material-ui/icons'
 import { Routing } from '../../routing'
-import { useDebouncedCallback } from 'use-debounce'
 
 const SEARCH_DELAY = 500
 

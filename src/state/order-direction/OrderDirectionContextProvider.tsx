@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { OrderDirection } from '../../api/types'
 import { OrderDirectionContext } from './OrderDirectionContext'
+import { OrderDirection } from '../../api/common'
 
 const OrderDirectionChangeMapping: Record<OrderDirection, OrderDirection> = {
   [OrderDirection.Ascending]: OrderDirection.Descending,

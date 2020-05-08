@@ -1,8 +1,8 @@
 import React from 'react'
 import { Button } from '@material-ui/core'
 import { ArrowDownward as AscendingIcon, ArrowUpward as DescendingIcon } from '@material-ui/icons'
-import { OrderDirection } from '../../api/types'
-import { useOrderDirection } from '../../state/order-direction/useOrderDirection'
+import { useOrderDirection } from '../../state/order-direction'
+import { OrderDirection } from '../../api/common'
 
 interface OrderButtonProps {
   label: string
