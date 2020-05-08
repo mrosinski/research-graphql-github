@@ -12,7 +12,7 @@ export const Search: React.FC = () => {
   const { push } = useHistory()
 
   const [goToProfile] = useDebouncedCallback(
-    (searchedPhrase: string) => searchedPhrase !== '' && push(Routing.Profile(searchedPhrase)),
+    (searchedPhrase: string) => searchedPhrase !== '' && push(Routing.Profile.Details(searchedPhrase)),
     SEARCH_DELAY
   )
 
